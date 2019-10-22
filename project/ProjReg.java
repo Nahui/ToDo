@@ -1,4 +1,4 @@
-package ToDo;
+package project;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -234,6 +234,44 @@ public class ProjReg {
 		}
 	}
 
+	public int[] getTasksDoneAndNotDone() {
+		ArrayList<Task> tempTaskList = new ArrayList<Task>();
+		int tasksToDo = 0;
+		int tasksDone = 0;
+
+		for (Project p : this.getProjects()) {
+			for (Task t : p.getTaskList()) {
+				tempTaskList.add(t);
+			}
+		}
+
+		tasksToDo = this.numberOfTasksCompleted(tempTaskList);
+		tasksDone = this.numberOfTasksNotCompleted(tempTaskList);
+
+		return new int[] { tasksToDo, tasksDone };
+
+	}
+
+	public int numberOfTasksCompleted(ArrayList<Task> taskList) {
+		int number = 0;
+		for (Task i : taskList) {
+			if (i.getTaskStatus().equals("Done")) {
+				number++;
+			}
+		}
+		return number;
+	}
+
+	public int numberOfTasksNotCompleted(ArrayList<Task> taskList) {
+		int number = 0;
+		for (Task i : taskList) {
+			if (i.getTaskStatus().equals("Not Done")) {
+				number++;
+			}
+		}
+		return number;
+	}
+
 	public void writeToFile() {
 
 		try {
@@ -247,7 +285,7 @@ public class ProjReg {
 			o.close();
 			f.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
+			System.out.println("File not found.");
 		} catch (IOException e) {
 			// System.out.println("Error initializing stream");
 		}
@@ -271,7 +309,8 @@ public class ProjReg {
 			oi.close();
 			fi.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
+			System.out.println(
+					"File not found. We will create the file for you once you create a new Project (option 3).");
 		} catch (IOException e) {
 			// System.out.println("Error initializing stream");
 		} catch (ClassNotFoundException e) {

@@ -1,4 +1,4 @@
-package ToDo;
+package project;
 import java.io.Serializable;
 
 public class Task implements Serializable {
