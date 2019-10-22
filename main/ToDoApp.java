@@ -25,58 +25,60 @@ public class ToDoApp {
 
 			// System.out.println("You have " + result[0] + " to do and " + result[1] + "
 			// are done!");
-			System.out.println("(1) Show Project List");
-			System.out.println("(2) Show Task List (by date or project)");
-			System.out.println("(3) Add New Project");
-			System.out.println("(4) Add New Task");
+			System.out.println("(1) Add New Project");
+			System.out.println("(2) Add New Task");
+			System.out.println("(3) Show Project List");
+			System.out.println("(4) Show Task List (by project)");
 			System.out.println("(5) Edit Task (update, mark as done, remove)");
-			System.out.println("(6) Save and Quit");
+			System.out.println("(6) Help on how to use this app.");
+			System.out.println("(7) Save and Quit");
 			// System.out.println("Type 'help' to know how to use this app.");
 			System.out.printf("> ");
 			mainChoice = input.nextInt();
 
 			switch (mainChoice) {
 
-			// (1) Show project list
+			// (1) Add New Project
 			case 1:
-				// Show all the projects
-				projects.showProjects();
-
-				break;
-
-			// (2) Show Task List (by date or project)
-			case 2:
-
-				// Show all tasks from a project
-				projects.showTasksFromProject();
-
-				break;
-
-			// (3) Add New Project
-			case 3:
 				// Add a new project
 				projects.addNewProject();
-
 				break;
 
-			// (4) Add New Task
-			case 4:
+			// (2) Add New Task
+			case 2:
+
 				// Show all projects
 				projects.showProjects();
 				// Add new task to a selected project
 				projects.addNewTask();
+				break;
 
+			// (3) Show project list
+			case 3:
+				// Show all the projects
+				projects.showProjects();
+				break;
+
+			// (4) Show Task List (by project)
+			case 4:
+				// Show all tasks from a project
+				projects.showTasksFromProject();
 				break;
 
 			// (5) Edit Task (update, mark as done, remove)
 			case 5:
 				// Edit a task
 				projects.editTask();
-
 				break;
 
-			// (6) Save and Quit
+			// (6) Help
 			case 6:
+				// Show help options
+				projects.getHelp();
+				break;
+
+			// (7) Save and Quit
+			case 7:
 				System.out.println("Thank you for using our app!");
 				return;
 
