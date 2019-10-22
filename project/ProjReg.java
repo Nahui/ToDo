@@ -272,6 +272,38 @@ public class ProjReg {
 		return number;
 	}
 
+	public void getHelp() {
+		System.out.println("(1) Add New Project				: Create a new project where you will be ");
+		System.out.println("keeping your tasks. To create a new project you need to specify Project Title ");
+		System.out.println("which has to be unique, and a project due date.");
+		System.out.println("");
+		System.out.println("(2) Add New Task				: Create a new task. In order to create");
+		System.out.println("a new task, the program will ask you to first choose a Project where you want");
+		System.out.println("to save that task. Then it will ask you to specify the Task Title, which has to");
+		System.out.println("be unique, and the due date of the task.");
+		System.out.println("");
+		System.out.println("(3) Show Project List				: Show a list with all your created projects.");
+		System.out.println("If you have no project, the list will be empty. Projects are shown in alphabetical order.");
+		System.out.println("");
+		System.out.println("(4) Show Task List (by project)			: Show a list of all your tasks from a");
+		System.out.println("specific project. The program will ask you to choose a project and then it will");
+		System.out.println("show you all the tasks in that project.");
+		System.out.println("");
+		System.out
+				.println("(5) Edit Task (update, mark as done, remove)	: Edit a task. You can edit a task's Title,");
+		System.out.println(
+				"Due Date, or Status. You can also remove a task. The program will ask you what project you want,");
+		System.out.println("and then it will let you choose what task of tha project you want to edit or remove.");
+		System.out.println(
+				"If you want to edit, it will ask you what part of the task you want to edit (Title, DueDate, Status).");
+		System.out.println("");
+		System.out.println("(6) Help on how to use this app.		: This help message.");
+		System.out.println("");
+		System.out.println("(7) Save and Quit				: Save all the changes and quit the program.");
+		System.out.println("");
+		System.out.printf("\n\n");
+	}
+
 	public void writeToFile() {
 
 		try {
