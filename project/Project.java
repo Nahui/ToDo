@@ -52,12 +52,12 @@ public class Project implements Serializable, Comparable<Project> {
 		return serialVersionUID;
 	}
 
-	// add method
+	// Method to add a task to a project
 	public void addTaskToProject(Task task) {
 		getTaskList().add(task);
 	}
 
-	// remove method
+	// Method to remove a task from a project
 	public void removeTaskFromProject(String taskID) {
 		Task a = this.findTaskInProject(taskID);
 		if (a != null) {
@@ -65,7 +65,7 @@ public class Project implements Serializable, Comparable<Project> {
 		}
 	}
 
-	// find method
+	// Method to find a task in a project
 	public Task findTaskInProject(String taskID) {
 		for (Task a : this.TaskList) {
 			if (a.getTaskTitle().equals(taskID)) {
@@ -75,7 +75,7 @@ public class Project implements Serializable, Comparable<Project> {
 		return null;
 	}
 
-	// rename method
+	// Method to rename a task in a project
 	public void setTaskName(String taskTitle, String newTitle) {
 		Task a = this.findTaskInProject(taskTitle);
 
@@ -85,7 +85,6 @@ public class Project implements Serializable, Comparable<Project> {
 	}
 
 	public int compareTo(Project o) {
-		// TODO Auto-generated method stub
 		return this.getProjectTitle().compareTo(o.getProjectTitle());
 	}
 

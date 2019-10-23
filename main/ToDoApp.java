@@ -9,16 +9,17 @@ public class ToDoApp {
 	public static void main(String[] args) throws Exception {
 
 		Scanner input = new Scanner(System.in);
-		String absolutePath = "/Users/valeria/Documents/eclipse-workspace/ToDoList/src/ToDo.txt";
-
 		int mainChoice = 0;
 
 		System.out.println("Welcome to ToDoApp");
+
 		while (true) {
 			ProjReg projects = new ProjReg();
 
-			// get tasks done and not done, NOT working
+			// Read all data from file
 			projects.readFromFile();
+
+			// Get tasks done and not done, NOT working
 			// int result[] = projects.getTasksDoneAndNotDone();
 
 			System.out.println();
@@ -32,7 +33,6 @@ public class ToDoApp {
 			System.out.println("(5) Edit Task (update, mark as done, remove)");
 			System.out.println("(6) Help on how to use this app.");
 			System.out.println("(7) Save and Quit");
-			// System.out.println("Type 'help' to know how to use this app.");
 			System.out.printf("> ");
 			mainChoice = input.nextInt();
 
@@ -40,40 +40,39 @@ public class ToDoApp {
 
 			// (1) Add New Project
 			case 1:
-				// Add a new project
+				// Call to method that adds new project
 				projects.addNewProject();
 				break;
 
 			// (2) Add New Task
 			case 2:
-
-				// Show all projects
+				// Call to method that shows all projects
 				projects.showProjects();
-				// Add new task to a selected project
+				// Call to method that adds new task to a selected project
 				projects.addNewTask();
 				break;
 
 			// (3) Show project list
 			case 3:
-				// Show all the projects
+				// Call to method that shows all projects
 				projects.showProjects();
 				break;
 
 			// (4) Show Task List (by project)
 			case 4:
-				// Show all tasks from a project
+				// Call to method that shows all tasks from a project
 				projects.showTasksFromProject();
 				break;
 
 			// (5) Edit Task (update, mark as done, remove)
 			case 5:
-				// Edit a task
+				// Call to method that edits a task
 				projects.editTask();
 				break;
 
 			// (6) Help
 			case 6:
-				// Show help options
+				// Call to method that shows help options
 				projects.getHelp();
 				break;
 
@@ -87,6 +86,8 @@ public class ToDoApp {
 				System.out.println("That is not a valid choice.");
 				break;
 			}
+
+			input.close();
 
 		}
 
