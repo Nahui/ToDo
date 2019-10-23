@@ -29,38 +29,38 @@ public class ProjReg {
 	String chosenTask, chosenTaskTitle, chosenTaskDate, chosenTaskStatus, chosenProjectTitle, chosenProjectDate,
 			chosenTaskInfoToEdit, chosenNewTitle, chosenNewDueDate, chosenNewStatus;
 
-	// add method
+	// Adding a new project
 	public void addProject(Project newProject) {
 		this.getProjects().add(newProject);
 	}
 
-	// remove method
+	// Removing a project
 	public void removeProject(String idNum) {
-		Project a = this.findProject(idNum);
-		if (a != null) {
-			this.projects.remove(a);
+		Project aProject = this.findProject(idNum);
+		if (aProject != null) {
+			this.projects.remove(aProject);
 		}
 	}
 
-	// find method
+	// Finding a project
 	public Project findProject(String idNum) {
-		for (Project a : this.projects) {
-			if (a.getProjectTitle().equals(idNum)) {
-				return a;
+		for (Project aProject : this.projects) {
+			if (aProject.getProjectTitle().equals(idNum)) {
+				return aProject;
 			}
 		}
 		return null;
 	}
 
-	// rename method
-	public void setProjectTitle(String taskTitle, String newName) {
-		Project a = this.findProject(taskTitle);
-
-		if (a != null) {
-			a.setProjectTitle(newName);
+	// Renaming a project
+	public void setProjectTitle(String projectTitle, String newName) {
+		Project aProject = this.findProject(projectTitle);
+		if (aProject != null) {
+			aProject.setProjectTitle(newName);
 		}
 	}
 
+	// Method that shows all the projects
 	public void showProjects() {
 		System.out.println("************ * ***********");
 		System.out.println("These are all your projects: ");
@@ -75,19 +75,20 @@ public class ProjReg {
 		}
 	}
 
+	// Method that shows all the tasks in a project
 	public void showTasksFromProject() {
 		Scanner input = new Scanner(System.in);
 		this.showProjects();
 		System.out.println("Please choose the project to view by typing its title: ");
 		System.out.printf("> ");
 		chosenProject = input.nextLine();
-
 		this.showTasksFromSelectedProject(chosenProject);
-
+		input.close();
 	}
 
+	// Method that helps the method showTasksFromProject() to show all the tasks
+	// from a selected project
 	public void showTasksFromSelectedProject(String myProject) {
-
 		System.out.println("************ * ***********");
 		System.out.println("These are all the tasks in your project " + myProject + ": ");
 		System.out.println("************ * ***********");
@@ -99,40 +100,39 @@ public class ProjReg {
 			System.out.println("\n");
 			System.out.println("*** * ***");
 		}
-
 	}
 
+	// Method that adds a new project
 	public void addNewProject() {
 		Scanner input = new Scanner(System.in);
+		// Collect title and due date of the project
 		System.out.println("Title of project (it has to be unique): ");
 		System.out.println("> ");
 		chosenProjectTitle = input.nextLine();
-
 		System.out.println("Due date of project: ");
 		System.out.println("> ");
 		chosenProjectDate = input.nextLine();
-		// chosenProjectDate = "123";
-
 		Project project = new Project(chosenProjectTitle, chosenProjectDate);
+		// Add the new project into the list of projects
 		this.addProject(project);
-
+		// Write the new project into the file
 		this.writeToFile();
-		this.showProjects();
-
+		// Let user know new project has been saved.
 		System.out.println(
 				"Your new project " + chosenProjectTitle + " with due date: " + chosenProjectDate + " has been added!");
-
+		// Show all the current projects
 		this.showProjects();
+		input.close();
 	}
 
+	// Method that adds a new task to a selected project
 	public void addNewTask() {
 		Scanner input = new Scanner(System.in);
 		// Choose one of the projects
 		System.out.println("Please choose the project where you want to add your task by typing its title: ");
 		System.out.printf("> ");
 		chosenProject = input.nextLine();
-
-		// Add new task
+		// Collect title, due date and status of the task
 		System.out.println("Title of task (it has to be unique): ");
 		System.out.printf("> ");
 		chosenTaskTitle = input.nextLine();
@@ -142,52 +142,42 @@ public class ProjReg {
 		System.out.println("Status of task (done / not done: ");
 		System.out.printf("> ");
 		chosenTaskStatus = input.nextLine();
-
 		Task task = new Task(chosenTaskTitle, chosenTaskDate, chosenTaskStatus);
-
+		// Add the new task into the list of tasks
 		this.findProject(chosenProject).addTaskToProject(task);
-
-		// write task to file
+		// Write task to file
 		this.writeToFile();
-
-		// Print that it was added
+		// Let the user know that the new task has been added
 		System.out.println("Your new task " + chosenTaskTitle + " with due date: " + chosenTaskDate + " and status: "
 				+ "\"" + chosenTaskStatus + "\"" + " has been added!");
-
-		// Show all the tasks
+		// Show all the current tasks
 		this.showTasksFromSelectedProject(chosenProject);
+		input.close();
 	}
 
+	// Method that allows user to edit or remove a task
 	public void editTask() {
 		Scanner input = new Scanner(System.in);
 		boolean status = true;
 		while (status == true) {
+			// Show all the projects
 			this.showProjects();
-			// showTasks()
-
-			// Show projects
-			// System.out.println("These are all your projects: ");
-			// projects.getProjects();
-
 			// Choose one of the projects
 			System.out.println("Please choose the project where you want to edit your task by typing its title: ");
 			System.out.printf("> ");
 			chosenProject = input.nextLine();
-
 			// Show the list of tasks for that project
 			this.showTasksFromSelectedProject(chosenProject);
-
 			// Choose a task to edit
 			System.out.println("Choose the task you want to edit by typing its title: ");
 			System.out.printf("> ");
 			chosenTask = input.nextLine();
-
 			System.out.println("Choose what you want to edit from the chosen task (Title / DueDate / Status). ");
 			System.out.println("If you want to remove the task then write \"Remove\": ");
 			System.out.printf("> ");
 			chosenTaskInfoToEdit = input.nextLine();
 
-			// Change title
+			// If user wants to change title
 			if (chosenTaskInfoToEdit.equals("Title")) {
 				System.out.println("Write the new title: ");
 				System.out.printf("> ");
@@ -197,7 +187,7 @@ public class ProjReg {
 				System.out.println("We have updated your task!");
 				status = false;
 			}
-			// Change due date
+			// If user wants to change due date
 			else if (chosenTaskInfoToEdit.equals("DueDate")) {
 				System.out.println("Write the new due date: ");
 				System.out.printf("> ");
@@ -208,7 +198,7 @@ public class ProjReg {
 				status = false;
 
 			}
-			// Change status
+			// If user wants to change status
 			else if (chosenTaskInfoToEdit.equals("Status")) {
 
 				System.out.println("Write the new status (Done / Not Done): ");
@@ -219,7 +209,7 @@ public class ProjReg {
 				System.out.println("We have updated your task!");
 				status = false;
 			}
-			// Remove task
+			// If user wants to change task
 			else if (chosenTaskInfoToEdit.equals("Remove")) {
 				this.findProject(chosenProject).removeTaskFromProject(chosenTask);
 				this.writeToFile();
@@ -232,26 +222,26 @@ public class ProjReg {
 				System.out.println("That is not a valid choice.");
 			}
 		}
+		input.close();
 	}
 
+	// Method that gets the number of tasks completed and not completed
 	public int[] getTasksDoneAndNotDone() {
 		ArrayList<Task> tempTaskList = new ArrayList<Task>();
 		int tasksToDo = 0;
 		int tasksDone = 0;
-
 		for (Project p : this.getProjects()) {
 			for (Task t : p.getTaskList()) {
 				tempTaskList.add(t);
 			}
 		}
-
 		tasksToDo = this.numberOfTasksCompleted(tempTaskList);
 		tasksDone = this.numberOfTasksNotCompleted(tempTaskList);
-
 		return new int[] { tasksToDo, tasksDone };
-
 	}
 
+	// Method that helps the method getTasksDoneAndNotDone() to sum up the number of
+	// tasks done
 	public int numberOfTasksCompleted(ArrayList<Task> taskList) {
 		int number = 0;
 		for (Task i : taskList) {
@@ -262,6 +252,8 @@ public class ProjReg {
 		return number;
 	}
 
+	// Method that helps the method getTasksDoneAndNotDone() to sum up the number of
+	// tasks not done
 	public int numberOfTasksNotCompleted(ArrayList<Task> taskList) {
 		int number = 0;
 		for (Task i : taskList) {
@@ -272,6 +264,7 @@ public class ProjReg {
 		return number;
 	}
 
+	// Method that shows help options to the user
 	public void getHelp() {
 		System.out.println("(1) Add New Project				: Create a new project where you will be ");
 		System.out.println("keeping your tasks. To create a new project you need to specify Project Title ");
@@ -304,12 +297,11 @@ public class ProjReg {
 		System.out.printf("\n\n");
 	}
 
+	// Method that writes objects to file
 	public void writeToFile() {
-
 		try {
 			FileOutputStream f = new FileOutputStream(new File("MyFile.txt"));
 			ObjectOutputStream o = new ObjectOutputStream(f);
-
 			// write objects to file
 			for (Project aProject : this.getProjects()) {
 				o.writeObject(aProject);
@@ -321,23 +313,20 @@ public class ProjReg {
 		} catch (IOException e) {
 			// System.out.println("Error initializing stream");
 		}
-
 	}
 
+	// Method that reads objects from file
 	public void readFromFile() {
 
 		try {
 			FileInputStream fi = new FileInputStream(new File("MyFile.txt"));
 			ObjectInputStream oi = new ObjectInputStream(fi);
-
 			// read objects from file
 			Project p = (Project) oi.readObject();
-
 			while (p != null) {
 				this.addProject(p);
 				p = (Project) oi.readObject();
 			}
-
 			oi.close();
 			fi.close();
 		} catch (FileNotFoundException e) {
@@ -348,9 +337,9 @@ public class ProjReg {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	// Method that sorts by project
 	public void sortProject() {
 		Collections.sort(this.getProjects());
 	}
