@@ -9,7 +9,7 @@ import project.Project;
 class ProjectTest {
 
 	private Project p1 = new Project();
-	private Project t2 = new Project();
+	private Project p2 = new Project();
 
 	@BeforeEach
 	void setUp() {
