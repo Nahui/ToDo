@@ -19,11 +19,11 @@ In order to run the app you need to run the file `ToDoApp.java` with your prefer
 
 ## 1. Creating a New Project
 The first thing you need to do when you start using the App for the first time is to create a new Project.
-Creating a new project is very simple, once you run the App, you choose the first option on the Menu *(1)*. The App will ask you to specify a *Title* for your new Project, which has to be **unique**, and a *due date*.
+Creating a new project is very simple, once you run the App, you choose the first option on the Menu *(1)*. The App will ask you to specify a *Title* for your new Project, which has to be **unique**, and a *Due Date*.
 
 ## 2. Creating a New Task
 Creating a task is only possible once you have created a Project. 
-To create a task you select the second option of the Menu *(2)*. The App will ask you what project you want to use to save this task. It will then ask you for a *Title* for the task, a *Due Date*, and a *Status* (which can be either "done" or "not done".
+To create a task you select the second option of the Menu *(2)*. The App will ask you what project you want to use to save this task. It will then ask you for a *Title* for the task, which has to be **unique**, a *Due Date*, and a *Status* (which can be either "done" or "not done".
 
 ## 3. Showign Your Projects
 To show all the projects you have in your App, you select the third option in the Menu *(3)*. If you have no projects, the list will be empty. If you have projects, the App will list them to you in alphabetical order.
