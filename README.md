@@ -14,7 +14,8 @@ In order to run the app you need to run the file `ToDoApp.java` with your prefer
 (5) Edit Task (update, mark as done, remove)
 (6) Help on how to use this app.
 (7) Save and Quit
-> ```
+> 
+```
 
 ## 1. Creating a New Project
 The first thing you need to do when you start using the App for the first time is to create a new Project.
