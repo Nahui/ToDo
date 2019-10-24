@@ -6,7 +6,8 @@ This textfile will guide you through the use of the app.
 ## 0. Starting the App
 In order to run the app you need to run the file `ToDoApp.java` with your prefered Java compiler. You will then see the *Menu* which looks like this:
 
-``` Welcome to ToDoApp
+``` 
+Welcome to ToDoApp
 
 (1) Add New Project
 (2) Add New Task
