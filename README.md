@@ -1,5 +1,5 @@
 # ToDo
-This repo contains a simple To Do App written with JAVA
+This repo contains a simple To Do App written with JAVA.
 This textfile will guide you through the use of the app.
 
 
